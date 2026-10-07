@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="zm.ac.mu.ict261.studentapp.controller.StudentController"
+            prefWidth="900" prefHeight="600">
+    <top>
+        <VBox spacing="6" styleClass="header">
+            <padding><Insets top="18" right="20" bottom="18" left="20"/></padding>
+            <Label text="Student Services" styleClass="title"/>
+            <Label text="ICT261 Advanced Java — Student Registration" styleClass="subtitle"/>
+        </VBox>
+    </top>
+    <center>
+        <SplitPane dividerPositions="0.36">
+            <VBox spacing="12" styleClass="form-panel">
+                <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                <Label text="Register Student" styleClass="section-title"/>
+                <Label text="Student Number"/>
+                <TextField fx:id="studentNoField" promptText="9 digits"/>
+                <Label text="Full Name"/>
+                <TextField fx:id="nameField" promptText="Student full name"/>
+                <Label text="Programme"/>
+                <ComboBox fx:id="programmeBox" promptText="Select programme"/>
+                <HBox spacing="10">
+                    <Button fx:id="saveButton" text="Register Student" onAction="#handleSave" defaultButton="true"/>
+                    <Button text="Clear" onAction="#handleClear"/>
+                </HBox>
+                <Separator/>
+                <Label text="Search"/>
+                <TextField fx:id="searchField" promptText="Search by student number"/>
+                <Button text="Search" onAction="#handleSearch"/>
+                <Button text="Show All" onAction="#handleShowAll"/>
+                <Label fx:id="messageLabel" wrapText="true"/>
+            </VBox>
+            <VBox spacing="10">
+                <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                <Label text="Registered Students" styleClass="section-title"/>
+                <TableView fx:id="studentTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="studentNoColumn" text="Student No." prefWidth="130"/>
+                        <TableColumn fx:id="nameColumn" text="Full Name" prefWidth="220"/>
+                        <TableColumn fx:id="programmeColumn" text="Programme" prefWidth="150"/>
+                    </columns>
+                </TableView>
+                <HBox spacing="12">
+                    <Label fx:id="totalLabel" text="Total students: 0"/>
+                    <Button fx:id="deleteButton" text="Delete Selected" onAction="#handleDelete"/>
+                </HBox>
+            </VBox>
+        </SplitPane>
+    </center>
+</BorderPane>
